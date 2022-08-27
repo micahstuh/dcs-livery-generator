@@ -7,4 +7,6 @@ Generates livery files with custom callsign text for DCS aircraft.
 
 ## TODO
 - Generate description file.
+- Create template partial class.
+- Create derivitive squadron classes that inherit from template class.
 - Add more templates :P
