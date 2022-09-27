@@ -12,6 +12,9 @@ image_editor_location = 'H:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe'
 # Prompt user for template
 template_type = input(
     '\n1. VFA-25 Line'
+    '\n2. VFA-25 Line Alternate'
+    '\n3. VFA-25 XO'
+    '\n4. VFA-25 CAG'
     '\nSelect a template: '
 )
 
@@ -35,9 +38,42 @@ if template_type == '1':
     text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
     text_color = (40, 40, 40)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
-                 (717, 1030), 4, text_font, text_color))
+                 (717, 1036), 2, text_font, text_color))
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
-                 (717, 1900), 176, text_font, text_color))
+                 (717, 1891), 178, text_font, text_color))
+elif template_type == '2':
+    source_folder = 'templates\\vfa-25\\332AEW VFA-25 Line Alternate\\'
+    source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_LineAlternate.dds'
+    destination_folder = 'output liveries\\332AEW VFA-25'
+    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
+    text_color = (40, 40, 40)
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1036), 2, text_font, text_color))
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1891), 178, text_font, text_color))
+elif template_type == '3':
+    source_folder = 'templates\\vfa-25\\332AEW VFA-25 XO\\'
+    source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_XO.dds'
+    destination_folder = 'output liveries\\332AEW VFA-25'
+    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
+    text_color = (40, 40, 40)
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1036), 2, text_font, text_color))
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1891), 178, text_font, text_color))
+elif template_type == '4':
+    source_folder = 'templates\\vfa-25\\332AEW VFA-25 CAG\\'
+    source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_CO.dds'
+    destination_folder = 'output liveries\\332AEW VFA-25'
+    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
+    text_color = (222, 171, 41)
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1036), 2, text_font, text_color))
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (717, 1891), 178, text_font, text_color))
 else:
     print('Invalid Template Index. Exiting...')
     exit()
