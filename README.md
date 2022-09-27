@@ -4,6 +4,9 @@ Generates livery files with custom callsign text for DCS aircraft.
 ## Currently Supported Aircraft
 - VFA-25
     - Line
+    - Line Alternate
+    - XO
+    - CAG
 
 ## TODO
 - Generate description file.
