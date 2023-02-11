@@ -7,6 +7,8 @@ Generates livery files with custom callsign text for DCS aircraft.
     - Line Alternate
     - XO
     - CAG
+- 480-FS
+    - Line
 
 ## TODO
 - Generate description file.

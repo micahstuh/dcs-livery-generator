@@ -7,7 +7,7 @@ from rotatedtext import RotatedText
 from typing import List
 
 # Configurable location of program with which to finalize livery edits
-image_editor_location = 'H:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe'
+image_editor_location = 'D:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe'
 
 # Prompt user for template
 template_type = input(
@@ -15,6 +15,7 @@ template_type = input(
     '\n2. VFA-25 Line Alternate'
     '\n3. VFA-25 XO'
     '\n4. VFA-25 CAG'
+    '\n5. 480-FS Line'
     '\nSelect a template: '
 )
 
@@ -34,7 +35,8 @@ if template_type == '1':
     source_folder = 'templates\\vfa-25\\332AEW VFA-25 Line\\'
     source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_Line.dds'
     destination_folder = 'output liveries\\332AEW VFA-25'
-    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    description_name_text = 'name = "332AEW VFA-25 ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
     text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
     text_color = (40, 40, 40)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
@@ -45,7 +47,8 @@ elif template_type == '2':
     source_folder = 'templates\\vfa-25\\332AEW VFA-25 Line Alternate\\'
     source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_LineAlternate.dds'
     destination_folder = 'output liveries\\332AEW VFA-25'
-    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    description_name_text = 'name = "332AEW VFA-25 ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
     text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
     text_color = (40, 40, 40)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
@@ -56,7 +59,8 @@ elif template_type == '3':
     source_folder = 'templates\\vfa-25\\332AEW VFA-25 XO\\'
     source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_XO.dds'
     destination_folder = 'output liveries\\332AEW VFA-25'
-    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    description_name_text = 'name = "332AEW VFA-25 ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
     text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
     text_color = (40, 40, 40)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
@@ -67,20 +71,34 @@ elif template_type == '4':
     source_folder = 'templates\\vfa-25\\332AEW VFA-25 CAG\\'
     source_file = source_folder + 'F18C_1_DIFF_VFA25_FistOftheFleet_CO.dds'
     destination_folder = 'output liveries\\332AEW VFA-25'
-    description_name_text = 'name = "332AEW VFA-25 ' + modex_text + '-' + callsign_text.capitalize() + '"\n'
+    description_name_text = 'name = "332AEW VFA-25 ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
     text_font = ImageFont.truetype('fonts\\verdana.ttf', 20)
     text_color = (222, 171, 41)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
                  (717, 1036), 2, text_font, text_color))
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
                  (717, 1891), 178, text_font, text_color))
+elif template_type == '5':
+    source_folder = 'templates\\480-FS\\332AEW 480-FS Line\\'
+    source_file = source_folder + 'F16_bl50_Main_1.dds'
+    destination_folder = 'output liveries\\332AEW 480-FS'
+    description_name_text = 'name = "332AEW 480-FS ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
+    text_font = ImageFont.truetype('fonts\\bell mt italic.ttf', 30)
+    text_color = (170, 170, 170)
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (963, 1380), -4, text_font, text_color))
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (963, 747), -176, text_font, text_color))
 else:
     print('Invalid Template Index. Exiting...')
     exit()
 
 # Create folder for livery generation
 source_folder_name = source_folder.split('\\')[-2]
-destination_folder += ' ' + modex_text + '-' + callsign_text.capitalize() + '\\'
+destination_folder += ' ' + modex_text + '-' + callsign_text.capitalize() + \
+    '\\'
 
 if os.path.exists(destination_folder):
     shutil.rmtree(destination_folder)
