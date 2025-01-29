@@ -2,12 +2,8 @@ import shutil
 from PIL import Image, ImageFont
 import re
 import os
-import subprocess
 from rotatedtext import RotatedText
 from typing import List
-
-# Configurable location of program with which to finalize livery edits
-image_editor_location = 'D:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe'
 
 # Prompt user for template
 template_type = input(
@@ -16,6 +12,7 @@ template_type = input(
     '\n3. VFA-25 XO'
     '\n4. VFA-25 CAG'
     '\n5. 480-FS Line'
+    '\n6. 480-FS Fligh-Leader'
     '\nSelect a template: '
 )
 
@@ -88,9 +85,21 @@ elif template_type == '5':
     text_font = ImageFont.truetype('fonts\\bell mt italic.ttf', 30)
     text_color = (170, 170, 170)
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
-                 (963, 1380), -4, text_font, text_color))
+                 (963, 1371), -4, text_font, text_color))
     texts.append(RotatedText(rank_text + ' ' + callsign_text,
-                 (963, 747), -176, text_font, text_color))
+                 (963, 760), -176, text_font, text_color))
+elif template_type == '6':
+    source_folder = 'templates\\480-FS\\332AEW 480-FS Flight-Leader\\'
+    source_file = source_folder + 'F16_bl50_Main_1.dds'
+    destination_folder = 'output liveries\\332AEW 480-FS'
+    description_name_text = 'name = "332AEW 480-FS ' + \
+        modex_text + '-' + callsign_text.capitalize() + '"\n'
+    text_font = ImageFont.truetype('fonts\\bell mt italic.ttf', 30)
+    text_color = (170, 170, 170)
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (963, 1371), -4, text_font, text_color))
+    texts.append(RotatedText(rank_text + ' ' + callsign_text,
+                 (963, 760), -176, text_font, text_color))
 else:
     print('Invalid Template Index. Exiting...')
     exit()
@@ -132,12 +141,7 @@ im = Image.open(source_file)
 for text in texts:
     text.apply_to_image(im)
 
-# Save modified image as PNG as a lossless middleman
+# Save modified image as DDS
 original_filename = source_file.split('\\')[-1].split('.')[0]
-output_file = destination_folder + original_filename + '.png'
-im.save(output_file)
-
-# Open file in gimp to allow saving as dds with DC5 mipmaps
-if os.path.exists(image_editor_location):
-    p = subprocess.Popen(
-        [image_editor_location, output_file])
+output_file = destination_folder + original_filename + '.dds'
+im.save(output_file, format='DDS')

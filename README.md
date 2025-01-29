@@ -9,6 +9,7 @@ Generates livery files with custom callsign text for DCS aircraft.
     - CAG
 - 480-FS
     - Line
+    - Flight Leader
 
 ## TODO
 - Generate description file.
